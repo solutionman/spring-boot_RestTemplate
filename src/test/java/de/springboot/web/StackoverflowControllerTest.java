@@ -24,7 +24,7 @@ public class StackoverflowControllerTest {
     StackoverflowController sut;
 
     @Test
-    public void getListOfProviders() {
+    public void TestGetListOfProviders() throws Exception {
         // prepare
         when(stackoverflowService.findAll()).thenReturn(ImmutableList.of());
         // testing
