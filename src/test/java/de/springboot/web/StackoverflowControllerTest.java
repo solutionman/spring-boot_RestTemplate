@@ -1,5 +1,6 @@
 package de.springboot.web;
 
+import com.google.common.collect.ImmutableList;
 import de.springboot.model.StackoverflowWebsite;
 import de.springboot.service.StackoverflowService;
 import org.junit.Before;
@@ -12,6 +13,8 @@ import org.mockito.runners.MockitoJUnitRunner;
 import java.util.List;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class StackoverflowControllerTest {
@@ -22,6 +25,11 @@ public class StackoverflowControllerTest {
 
     @Test
     public void getListOfProviders() {
+        // prepare
+        when(stackoverflowService.findAll()).thenReturn(ImmutableList.of());
+        // testing
         List<StackoverflowWebsite> listOfProviders = sut.getListOfProviders();
+        // validate
+        verify(stackoverflowService).findAll();
     }
 }
