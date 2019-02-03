@@ -30,7 +30,7 @@ public class StackoverflowService {
 
     private StackoverflowWebsite toStackoverflowWebsite(@NonNull SiteDto input){
         return new StackoverflowWebsite(
-                input.getSite_url(),
+                input.getSite_url().substring("https://".length(), input.getSite_url().length() - ".com".length()),
                 input.getSite_url(),
                 input.getFavicon_url(),
                 input.getName(),
